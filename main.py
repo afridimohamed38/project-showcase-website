@@ -3,7 +3,6 @@ import pandas
 
 st.set_page_config(layout="wide")
 
-
 col1, col2 = st.columns(2)
 
 with col1:  # to open a column use "with" context manager
@@ -18,20 +17,25 @@ with col2:
                 I also have data monitoring support experience before that in the same organization"""
     st.write(content)
 
-
 content2 = """
     Below you can find some of the apps i have built using python. Feel free to contact me!
 """
 st.info(content2)
 
-col3, col4 = st.columns(2)
+col3, empty_col, col4 = st.columns([1.5, 0.5, 1.5])
 
-df = pandas.read_csv("data.csv", sep=";") # creating a data frame
+df = pandas.read_csv("data.csv", sep=";")  # creating a data frame
 
 with col3:  # getting first 10 titles starting from 0 to 9
     for index, row in df[:10].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/" + row['image'])
+        st.write(f"[Source code]({row['url']})")
 
 with col4:  # getting next 10 titles starting from 10 to 19
     for index, row in df[10:].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/" + row['image'])
+        st.write(f"[Source code]({row['url']})")
