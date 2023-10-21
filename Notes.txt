@@ -1,0 +1,5 @@
+Creating prototype for your app.
+
+Prototype is a visual representation of app.
+Creating a prototype saves a lot of time.
+Prototyping software used is figma.
