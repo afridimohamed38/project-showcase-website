@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas
 
 st.set_page_config(layout="wide")
 
@@ -22,3 +23,15 @@ content2 = """
     Below you can find some of the apps i have built using python. Feel free to contact me!
 """
 st.info(content2)
+
+col3, col4 = st.columns(2)
+
+df = pandas.read_csv("data.csv", sep=";") # creating a data frame
+
+with col3:  # getting first 10 titles starting from 0 to 9
+    for index, row in df[:10].iterrows():
+        st.header(row["title"])
+
+with col4:  # getting next 10 titles starting from 10 to 19
+    for index, row in df[10:].iterrows():
+        st.header(row["title"])
